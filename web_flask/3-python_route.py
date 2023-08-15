@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+ #!/usr/bin/python3
 """
 Starts a Flask web application
 
@@ -43,8 +43,6 @@ def pythoniscool(text='is cool'):
     of the text variable replacing underscore _
     symbols with a space
     """
-
-
-    return 'Python {}'.format(text.replace('_',' '))
+    return 'Python {}'.format(text.replace('_' , ' '))
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')
