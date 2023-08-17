@@ -1,46 +1,60 @@
 #!/usr/bin/python3
-""" A script that starts a flask web application """
+"""
+imports
+"""
 from flask import Flask, render_template
+
 app = Flask(__name__)
+"""
+Routes
+"""
 
 
-@app.route('/', strict_slashes=False)
-def hello_hbnb():
-    """ Prints a Message when / is called """
-    return 'Hello HBNB!'
+@app.route("/", strict_slashes=False)
+def index():
+    return ("Hello HBNB!")
 
 
-@app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """ Prints a Message when /hbnb is called """
-    return 'HBNB'
+"""
+HBNB
+"""
 
 
-@app.route('/c/<text>', strict_slashes=False)
-def c_is_fun(text):
-    """ Prints a Message when /c is called """
-    return "C " + text.replace('_', ' ')
+@app.route("/hbnb", strict_slashes=False)
+def HBNB():
+    return ("HBNB")
 
 
-@app.route('/python', strict_slashes=False)
-@app.route('/python/<text>', strict_slashes=False)
-def python_is_cool(text='is_cool'):
-    """ Prints a Message when /python is called """
-    return "Python " + text.replace('_', ' ')
+"""
+C is fun
+"""
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
-def n_is_number(n):
-    """ Prints a Message when /number is called only if n is an int"""
-    return "{:d} is a number".format(n)
+@app.route("/c/<text>", strict_slashes=False)
+def C(text):
+    newtext = text.replace("_", " ")
+    return (f"C {newtext}")
 
 
-@app.route('/number_template/<int:n>', strict_slashes=False)
+@app.route("/python/", defaults={"text": "is cool"}, strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
+def python(text):
+    text = text.replace("_", " ")
+    return (f"Python {text}")
+
+
+@app.route("/number/<int:n>", strict_slashes=False)
+def number(n):
+    return (f"{n} is a number")
+
+
+@app.route("/number_template/<int:n>", strict_slashes=False)
 def number_template(n):
-    """ display a HTML page only if n is an integer """
-    return render_template('5-number.html', value=n)
+    return render_template('5-number.html', n=n)
 
 
+"""
+Define the host and port that the web app is listening
+"""
 if __name__ == "__main__":
-    """ Main Function """
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port="5000", debug=True)
