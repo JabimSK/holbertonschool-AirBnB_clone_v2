@@ -42,7 +42,7 @@ def pythoniscool(text='is cool'):
     of the text variable replacing underscore _
     symbols with a space
     """
-    return 'Python {}'.format(text.replace('_',' '))
+    return 'Python {}'.format(text.replace('_','  '))
 
 
 @app.route("/number/<int:n>", strict_slashes=False)
