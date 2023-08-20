@@ -27,8 +27,8 @@ class DBStorage:
             getenv('HBNB_MYSQL_USER'),
             getenv('HBNB_MYSQL_PWD'),
             getenv('HBNB_MYSQL_HOST'),
-            getenv('HBNB_MYSQL_DB')),        
-            pool_pre_ping=True                             
+            getenv('HBNB_MYSQL_DB')),
+            pool_pre_ping=True
         )
 
         if getenv('HBNB_ENV') == 'test':
@@ -44,7 +44,7 @@ class DBStorage:
             "User": User,
             "Place": Place,
             "Review": Review,
-            "Amenity": Amenity,   
+            "Amenity": Amenity,
         }
         result = {}
         query_rows = []
